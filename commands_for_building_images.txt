@@ -1,0 +1,26 @@
+docker build -t onem2mserverimage .
+docker tag onem2mserverimage abhishek28069/unisense:onem2mserverimage
+docker push abhishek28069/unisense:onem2mserverimage
+docker pull abhishek28069/unisense:onem2mserverimage
+
+docker build -t platformuiimage .
+docker tag platformuiimage abhishek28069/unisense:platformuiimage
+docker push abhishek28069/unisense:platformuiimage
+docker pull abhishek28069/unisense:platformuiimage
+
+docker build -t platformbackendimage .
+docker tag platformbackendimage abhishek28069/unisense:platformbackendimage
+docker push abhishek28069/unisense:platformbackendimage
+docker pull abhishek28069/unisense:platformbackendimage
+
+docker build -t sensormanagerimage .
+docker tag sensormanagerimage abhishek28069/unisense:sensormanagerimage
+docker push abhishek28069/unisense:sensormanagerimage
+docker pull abhishek28069/unisense:sensormanagerimage
+
+docker build -t sensormanagerfrontendimage .
+docker tag sensormanagerfrontendimage abhishek28069/unisense:sensormanagerfrontendimage
+docker push abhishek28069/unisense:sensormanagerfrontendimage
+docker pull abhishek28069/unisense:sensormanagerfrontendimage
+
+
