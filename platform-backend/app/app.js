@@ -29,8 +29,7 @@ const supabase = createClient(
 const publishMessage = (content) => {
   const stream = Kafka.Producer.createWriteStream(
     {
-      "metadata.broker.list": "localhost:9092",
-      "message.max.bytes": 20971520,
+      "metadata.broker.list": "20.75.91.206:9092",
     },
     {},
     { topic: "scheduled_apps" }
@@ -46,7 +45,7 @@ const publishMessage = (content) => {
 const publishZipFile = async (app_id) => {
   const stream = Kafka.Producer.createWriteStream(
     {
-      "metadata.broker.list": "localhost:9092",
+      "metadata.broker.list": "20.75.91.206:9092",
       "message.max.bytes": 20971520,
     },
     {},
@@ -198,7 +197,7 @@ app.post("/schedule-app", async (req, res) => {
     if (error) {
       throw error;
     }
-    // publishMessage({ location, enduser_name, app_id, instance_id, schedule_info, sensor_binding });
+    publishMessage({ location, enduser_name, app_id, instance_id, schedule_info, sensor_binding });
     // publishZipFile(app_id);
     return res.status(200).json({ message: "App scheduled successfully" });
   } catch (error) {
