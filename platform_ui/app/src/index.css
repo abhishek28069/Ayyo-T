@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Athletics";
+  src: url("./assets/fonts/AthleticsRegular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Athletics";
+  src: url("./assets/fonts/AthleticsBold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Albra";
+  src: url("./assets/fonts/AlbraRegular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Albra";
+  src: url("./assets/fonts/AlbraBold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@layer base {
+  html {
+    @apply text-white;
+  }
+  body {
+    @apply bg-[#0d0d0d];
+  }
+  h1 {
+    @apply text-4xl text-[#94f494] font-bold;
+  }
+  h2 {
+    @apply text-3xl text-[#94f494] font-bold;
+  }
+  h3 {
+    @apply text-xl text-[#94f494] font-bold;
+  }
+  h4 {
+    @apply text-sm text-[#94f494] font-bold;
+  }
+  h6 {
+    @apply text-xs text-[#94f494] font-bold;
+  }
+}
+
+@layer components {
+  .shadow-candy {
+    @apply shadow-[inset_0px_2px_2px_#202020_,_inset_0px_-2px_2px_#000];
+  }
+  .gradient-background {
+    @apply bg-gradient-to-t from-[#aeaeae] to-[#bebebe];
+  }
+  .gradient-text {
+    @apply bg-gradient-to-t from-[#289272] to-[#A9FFE5] text-transparent bg-clip-text;
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

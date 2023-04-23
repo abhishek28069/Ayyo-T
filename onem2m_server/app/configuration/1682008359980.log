@@ -1,0 +1,326 @@
+!SESSION 2023-04-20 22:02:39.923 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.18
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Command-line arguments:  -console
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.160
+!MESSAGE Bundle reference:file:pax-confman-propsloader-0.2.3.jar@1:start not found.
+
+!ENTRY org.eclipse.equinox.http.jetty 4 0 2023-04-20 22:02:40.345
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.equinox.http.jetty [14]
+  Unresolved requirement: Import-Package: javax.servlet; version="[2.6.0,4.0.0)"
+    -> Export-Package: javax.servlet; bundle-symbolic-name="javax.servlet"; bundle-version="3.1.0.v201410161800"; version="3.1.0"; uses:="javax.servlet.descriptor,javax.servlet.annotation"
+       javax.servlet [1]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.SystemModule.startWorker(SystemModule.java:242)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:571)
+	at org.eclipse.osgi.container.Module.start(Module.java:439)
+	at org.eclipse.osgi.container.SystemModule.start(SystemModule.java:172)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.start(EquinoxBundle.java:393)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.start(EquinoxBundle.java:412)
+	at org.eclipse.osgi.launch.Equinox.start(Equinox.java:115)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.startup(EclipseStarter.java:318)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:231)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1438)
+
+!ENTRY org.eclipse.om2m.datamapping.jaxb 4 0 2023-04-20 22:02:40.348
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.datamapping.jaxb [35]
+  Unresolved requirement: Import-Package: org.eclipse.om2m.commons.constants
+    -> Export-Package: org.eclipse.om2m.commons.constants; bundle-symbolic-name="org.eclipse.om2m.commons"; bundle-version="1.1.0.20210212-1040"; version="0.0.0"
+       org.eclipse.om2m.commons [28]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.SystemModule.startWorker(SystemModule.java:242)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:571)
+	at org.eclipse.osgi.container.Module.start(Module.java:439)
+	at org.eclipse.osgi.container.SystemModule.start(SystemModule.java:172)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.start(EquinoxBundle.java:393)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.start(EquinoxBundle.java:412)
+	at org.eclipse.osgi.launch.Equinox.start(Equinox.java:115)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.startup(EclipseStarter.java:318)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:231)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1438)
+
+!ENTRY org.eclipse.om2m.binding.coap 4 0 2023-04-20 22:02:40.349
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.binding.coap [25]
+  Unresolved requirement: Import-Package: org.eclipse.om2m.binding.service
+    -> Export-Package: org.eclipse.om2m.binding.service; bundle-symbolic-name="org.eclipse.om2m.binding.service"; bundle-version="1.1.0.20210212-1040"; version="0.0.0"
+       org.eclipse.om2m.binding.service [27]
+         Unresolved requirement: Require-Bundle: org.eclipse.om2m.commons
+           -> Bundle-SymbolicName: org.eclipse.om2m.commons; bundle-version="1.1.0.20210212-1040"
+              org.eclipse.om2m.commons [28]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.binding.http 4 0 2023-04-20 22:02:40.349
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.binding.http [26]
+  Unresolved requirement: Import-Package: javax.servlet
+    -> Export-Package: javax.servlet; bundle-symbolic-name="javax.servlet"; bundle-version="3.1.0.v201410161800"; version="3.1.0"; uses:="javax.servlet.descriptor,javax.servlet.annotation"
+       javax.servlet [1]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.persistence.eclipselink 4 0 2023-04-20 22:02:40.349
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.persistence.eclipselink [42]
+  Unresolved requirement: Import-Package: javax.persistence
+    -> Export-Package: javax.persistence; bundle-symbolic-name="org.eclipse.om2m.commons"; bundle-version="1.1.0.20210212-1040"; version="0.0.0"
+       org.eclipse.om2m.commons [28]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.core 4 0 2023-04-20 22:02:40.350
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.core [30]
+  Unresolved requirement: Import-Package: javax.persistence
+    -> Export-Package: javax.persistence; bundle-symbolic-name="org.eclipse.om2m.commons"; bundle-version="1.1.0.20210212-1040"; version="0.0.0"
+       org.eclipse.om2m.commons [28]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.equinox.http.servlet 4 0 2023-04-20 22:02:40.350
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.equinox.http.servlet [15]
+  Unresolved requirement: Import-Package: javax.servlet; version="[2.3.0,4.0.0)"
+    -> Export-Package: javax.servlet; bundle-symbolic-name="javax.servlet"; bundle-version="3.1.0.v201410161800"; version="3.1.0"; uses:="javax.servlet.descriptor,javax.servlet.annotation"
+       javax.servlet [1]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.webapp.resourcesbrowser.json 4 0 2023-04-20 22:02:40.409
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.webapp.resourcesbrowser.json [54]
+  Unresolved requirement: Import-Package: javax.servlet
+    -> Export-Package: javax.servlet; bundle-symbolic-name="javax.servlet"; bundle-version="3.1.0.v201410161800"; version="3.1.0"; uses:="javax.servlet.descriptor,javax.servlet.annotation"
+       javax.servlet [1]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.sdt.api 4 0 2023-04-20 22:02:40.409
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.sdt.api [45]
+  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.sdt.comparator.xml 4 0 2023-04-20 22:02:40.410
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.sdt.comparator.xml [46]
+  Unresolved requirement: Import-Package: javax.servlet
+    -> Export-Package: javax.servlet; bundle-symbolic-name="javax.servlet"; bundle-version="3.1.0.v201410161800"; version="3.1.0"; uses:="javax.servlet.descriptor,javax.servlet.annotation"
+       javax.servlet [1]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.sdt.home 4 0 2023-04-20 22:02:40.411
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.sdt.home [47]
+  Unresolved requirement: Import-Package: org.eclipse.om2m.commons.resource
+    -> Export-Package: org.eclipse.om2m.commons.resource; bundle-symbolic-name="org.eclipse.om2m.commons"; bundle-version="1.1.0.20210212-1040"; version="0.0.0"
+       org.eclipse.om2m.commons [28]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.sdt.home.driver 4 0 2023-04-20 22:02:40.411
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.sdt.home.driver [48]
+  Unresolved requirement: Import-Package: org.eclipse.om2m.sdt
+    -> Export-Package: org.eclipse.om2m.sdt; bundle-symbolic-name="org.eclipse.om2m.sdt.api"; bundle-version="1.1.0.20210212-1040"; version="0.0.0"
+       org.eclipse.om2m.sdt.api [45]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.sdt.home.monitoring 4 0 2023-04-20 22:02:40.412
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.sdt.home.monitoring [50]
+  Unresolved requirement: Import-Package: javax.servlet
+    -> Export-Package: javax.servlet; bundle-symbolic-name="javax.servlet"; bundle-version="3.1.0.v201410161800"; version="3.1.0"; uses:="javax.servlet.descriptor,javax.servlet.annotation"
+       javax.servlet [1]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.om2m.ipe.sdt 4 0 2023-04-20 22:02:40.413
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.om2m.ipe.sdt [40]
+  Unresolved requirement: Import-Package: org.eclipse.om2m.commons.constants
+    -> Export-Package: org.eclipse.om2m.commons.constants; bundle-symbolic-name="org.eclipse.om2m.commons"; bundle-version="1.1.0.20210212-1040"; version="0.0.0"
+       org.eclipse.om2m.commons [28]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1562)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.413
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.equinox.http.jetty_3.0.200.v20131021-1843.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.413
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.binding.coap_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.413
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.binding.http_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.413
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.core_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.413
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.datamapping.jaxb_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.413
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.ipe.sdt_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.413
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.persistence.eclipselink_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.413
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.sdt.api_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.414
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.sdt.comparator.xml_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.414
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.sdt.home_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.414
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.sdt.home.driver_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.414
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.sdt.home.monitoring_1.1.0.20210212-1040.jar was not resolved.
+
+!ENTRY org.eclipse.osgi 4 0 2023-04-20 22:02:40.414
+!MESSAGE Bundle initial@reference:file:plugins/org.eclipse.om2m.webapp.resourcesbrowser.json_1.1.0.20210212-1040.jar was not resolved.
