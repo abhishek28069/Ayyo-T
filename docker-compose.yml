@@ -12,7 +12,7 @@ services:
 
   onem2m_server:
     # build: ./onem2m_server
-    image: abhishek28069/unisense:onem2mserverimage
+    image: abhishek28069/unisense:onem2m_server
     container_name: onem2m_server
     hostname: onem2m_server
     ports:
@@ -22,7 +22,7 @@ services:
       
   sensor_manager:
     # build: ./sensor_manager
-    image: abhishek28069/unisense:sensormanagerimage
+    image: abhishek28069/unisense:sensor_manager
     container_name: sensor_manager
     hostname: sensor_manager
     ports:
@@ -37,7 +37,7 @@ services:
 
   platform_backend:
     # build: ./platform-backend
-    image: abhishek28069/unisense:platformbackendimage
+    image: abhishek28069/unisense:platform-backend
     container_name: platform_backend
     hostname: platform_backend
     ports:
@@ -49,7 +49,7 @@ services:
 
   platform_ui:
     # build: ./platform_ui
-    image: abhishek28069/unisense:platformuiimage
+    image: abhishek28069/unisense:platform_ui
     container_name: platform_ui
     hostname: platform_ui
     ports:
@@ -59,7 +59,7 @@ services:
 
   sensormanager_frontend:
     # build: ./sensormanager_frontend
-    image: abhishek28069/unisense:sensormanagerfrontendimage
+    image: abhishek28069/unisense:sensormanager_frontend
     container_name: sensormanager_frontend
     hostname: sensormanager_frontend
     ports:

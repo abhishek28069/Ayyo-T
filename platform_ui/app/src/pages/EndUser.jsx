@@ -18,6 +18,7 @@ export const EndUser = () => {
   const secondRef = React.useRef();
   const thirdRef = React.useRef();
   const [stage, setStage] = React.useState(1);
+  const [loading, setLoading] = React.useState(false);
   const [apps, setApps] = React.useState([]);
   const [bindings, setBindings] = React.useState([]);
   const [selectedApp, setSelectedApp] = React.useState({});
@@ -48,6 +49,7 @@ export const EndUser = () => {
     e.preventDefault();
     setSelectedBinding({});
     setSelectedGroup();
+    setLoading(true);
     // fetch groups and filter based on selectedApp
     console.log(selectedApp.app_config);
     try {
@@ -63,6 +65,7 @@ export const EndUser = () => {
     } catch (error) {
       console.log("error", error);
     }
+    setLoading(false);
     secondRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -75,7 +78,7 @@ export const EndUser = () => {
     thirdRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSchedule = async (e) => {
+  const handleSchedule = async (e, sched_flag = 1) => {
     e.preventDefault();
     if (Object.keys(selectedApp).length === 0) {
       firstRef.current.scrollIntoView({ behavior: "smooth" });
@@ -92,6 +95,7 @@ export const EndUser = () => {
       console.log("schedule not valid");
       return;
     }
+    setLoading(true);
     // build schedule object
     let scheduleJson = {};
     scheduleJson.start_date = value[0];
@@ -114,6 +118,7 @@ export const EndUser = () => {
           schedule_info: scheduleJson,
           sensor_binding: selectedBinding,
           location: selectedGroup,
+          sched_flag: sched_flag,
         }),
       });
       const result = await response.text();
@@ -121,6 +126,7 @@ export const EndUser = () => {
     } catch (error) {
       console.log("error", error);
     }
+    setLoading(false);
   };
 
   const loadAppData = async () => {
@@ -212,7 +218,9 @@ export const EndUser = () => {
               <div className="my-4">
                 <button
                   type="submit"
-                  className="w-full px-4 py-2 bg-[#94f494] rounded-lg font-bold text-[#0d0d0d] opacity-95 hover:opacity-100 active:scale-[0.99] hover:shadow-lg"
+                  className={`w-full px-4 py-2 bg-[#94f494] rounded-lg font-bold text-[#0d0d0d] opacity-95 hover:opacity-100 active:scale-[0.99] hover:shadow-lg ${
+                    loading ? "animate-pulse opacity-75" : " "
+                  }`}
                 >
                   Next: Select Location
                 </button>
@@ -269,7 +277,7 @@ export const EndUser = () => {
                 </button>
               </div>
             </form>
-            <form ref={thirdRef} className="flex flex-col justify-center w-5/6 h-screen gap-2 p-6" onSubmit={handleSchedule}>
+            <form ref={thirdRef} className="flex flex-col justify-center w-5/6 h-screen gap-2 p-6" onSubmit={(e) => handleSchedule(e, 1)}>
               <div className="flex items-stretch gap-16 justify-stretch bg-[#0d0d0d] p-10 rounded-lg">
                 <div className="w-1/2">
                   <Group className="bg-[#121212] p-2 rounded" position="center">
@@ -325,6 +333,21 @@ export const EndUser = () => {
                   className="w-full px-4 py-2 bg-[#94f494] rounded-lg font-bold text-[#0d0d0d] opacity-95 hover:opacity-100 active:scale-[0.99] hover:shadow-lg"
                 >
                   Schedule
+                </button>
+              </div>
+              <div className="flex items-center justify-center w-full gap-2">
+                <div className="flex-grow border-b-2 border-white"></div>
+                <div>Or</div>
+                <div className="flex-grow border-b-2 border-white"></div>
+              </div>
+              <div className="my-4">
+                <button
+                  onClick={(e) => handleSchedule(e, 0)}
+                  className={`w-full px-4 py-2 bg-[#94f494] rounded-lg font-bold text-[#0d0d0d] opacity-95 hover:opacity-100 active:scale-[0.99] hover:shadow-lg ${
+                    loading ? "animate-pulse opacity-75" : " "
+                  }`}
+                >
+                  Run Now
                 </button>
               </div>
             </form>

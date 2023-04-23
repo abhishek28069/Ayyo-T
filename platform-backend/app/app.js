@@ -26,20 +26,39 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ0eXpiZmVxd2tlcHdnb2JlaHh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE0NjgyOTQsImV4cCI6MTk5NzA0NDI5NH0.FPhB2K8Zw796-3YtiS5yEOvqJEAkICmak-l2RqFB6Mc"
 );
 
-const publishMessage = (content) => {
-  const stream = Kafka.Producer.createWriteStream(
-    {
-      "metadata.broker.list": "20.75.91.206:9092",
-    },
-    {},
-    { topic: "scheduled_apps" }
-  );
-  const success = stream.write(Buffer.from(JSON.stringify(content)));
-  if (success) {
-    console.log("messaged successfully");
-  } else {
-    console.log("message failed");
-  }
+const publishMessage = (app_crons) => {
+  const producer = new Kafka.Producer({
+    "client.id": "kafka-producer",
+    "metadata.broker.list": "20.75.91.206:9092", // Replace with your Kafka bootstrap servers
+    "api.version.request": true,
+    dr_msg_cb: true, // Delivery report callback
+  });
+
+  producer.connect();
+
+  producer.on("ready", () => {
+    console.log("publishing kafka message-", app_crons);
+    producer.produce(
+      "scheduled_apps3", // Replace with the name of your Kafka topic
+      null,
+      new Buffer.from(JSON.stringify(app_crons)),
+      null,
+      Date.now(),
+      (err, report) => {
+        if (err) {
+          console.error(`Failed to deliver message: ${err}`);
+        } else {
+          console.log(`Message delivered to topic: ${report.topic}, partition: ${report.partition}, offset: ${report.offset}`);
+        }
+      },
+      // Use JSON.stringify as key serializer
+      { keySerializer: (data) => new Buffer.from(JSON.stringify(data)) }
+    );
+  });
+
+  producer.on("event.error", (err) => {
+    console.error(`Producer error: ${err}`);
+  });
 };
 
 const publishZipFile = async (app_id) => {
@@ -188,16 +207,16 @@ app.post("/sensor-bindings", async (req, res) => {
 });
 
 app.post("/schedule-app", async (req, res) => {
-  const { enduser_name, app_id, schedule_info, sensor_binding, location } = req.body;
+  const { enduser_name, app_id, schedule_info, sensor_binding, location, sched_flag } = req.body;
   try {
     const instance_id = uuidv4();
     const { data, error } = await supabase
       .from("scheduled_apps")
-      .insert([{ location, enduser_name, app_id, instance_id, schedule_info, sensor_binding }]);
+      .insert([{ location, enduser_name, app_id, instance_id, schedule_info, sensor_bindings: sensor_binding, sched_flag }]);
     if (error) {
       throw error;
     }
-    publishMessage({ location, enduser_name, app_id, instance_id, schedule_info, sensor_binding });
+    publishMessage({ location, enduser_name, app_id, instance_id, schedule_info, sensor_bindings: sensor_binding, sched_flag });
     // publishZipFile(app_id);
     return res.status(200).json({ message: "App scheduled successfully" });
   } catch (error) {
