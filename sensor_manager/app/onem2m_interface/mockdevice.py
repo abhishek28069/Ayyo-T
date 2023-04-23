@@ -12,7 +12,7 @@ from faker import *
 data_frequency = 3  # 3 seconds
 
 onem2m_base_url = "http://onem2m_server:5089"
-onem2m_warehouse_base_url = "http://localhost:5091/"
+onem2m_warehouse_base_url = "http://sensor_manager:5091/"
 
 
 def get_rand_data(device_type):
