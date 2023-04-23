@@ -11,6 +11,9 @@ from faker import *
 
 data_frequency = 3  # 3 seconds
 
+onem2m_base_url = "http://onem2m_server:5089"
+onem2m_warehouse_base_url = "http://localhost:5091/"
+
 
 def get_rand_data(device_type):
     # Call the appropriate function based on the device type
@@ -39,7 +42,7 @@ def post_random_data(device_name, device_group, device_type, container):
 
     _data_cin = [timestamp, generated_data]
 
-    url = "http://localhost:5089/~/in-cse/in-name/IIITH/{}/{}".format(
+    url = onem2m_base_url + "/~/in-cse/in-name/IIITH/{}/{}".format(
         device_name, container
     )
 
@@ -79,14 +82,15 @@ def run(device_name, device_group, device_type, container):
 
 def subscribe(device_name):
     url = (
-        "http://10.1.37.214:5089/~/in-cse/in-name/IIITH/"
+        onem2m_base_url
+        + "/~/in-cse/in-name/IIITH/"
         + device_name
         + "/"
         + device_name
         + "_data"
     )
     headers = {"X-M2M-Origin": "admin:admin", "Content-Type": "application/json;ty=23"}
-    payload = {"m2m:sub": {"rn": "Sub-DW", "nct": 2, "nu": "http://10.1.37.214:5091/"}}
+    payload = {"m2m:sub": {"rn": "Sub-DW", "nct": 2, "nu": onem2m_warehouse_base_url}}
 
     response = requests.request("POST", url, headers=headers, json=payload)
     print(response.text)
@@ -103,3 +107,8 @@ if __name__ == "__main__":
         container = sys.argv[4]
         subscribe(device_name)
         run(device_name, device_group, device_type, container)
+
+
+def run_mock_device(device_name, device_group, device_type, container):
+    subscribe(device_name)
+    run(device_name, device_group, device_type, container)

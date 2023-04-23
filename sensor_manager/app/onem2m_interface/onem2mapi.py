@@ -19,8 +19,13 @@ from db import (
     fetch_sensors,
 )
 
+from mockdevice import subscribe, post_random_data, data_frequency
+
 
 app = Flask(__name__)
+processes = {}
+stop_flags = {}
+
 
 CORS(app)
 
@@ -406,13 +411,34 @@ def create_desc_CIN(uri_desc_cnt, node_description, desc_cin_labels, data_format
     return True if response.status_code == 201 else False
 
 
-processes = {}
+# ------------------------------ run the devices ----------------------------- #
+def run_mock_device(device_name, device_group, device_type, container):
+    global stop_flags
+    subscribe(device_name)
+    publish_count = 0
+    while True:
+        if stop_flags[device_name]:
+            break
+        status_code = post_random_data(
+            device_name, device_group, device_type, container
+        )
+        if status_code == 201:
+            publish_count += 1
+            print("Data publishing at " + str(data_frequency) + "-second frequency")
+            print("Publish Successful")
+            print("Number of data point published = " + str(publish_count))
+        else:
+            print(
+                "Unable to publish data, process failed with a status code: "
+                + str(status_code)
+            )
+        time.sleep(data_frequency)
 
 
 @app.route("/rundevicescript", methods=["POST"])
 def run_device_script():
     global processes
-    process = None
+    global stop_flags
     try:
         device_name = request.json.get("device_name")
         device_type = request.json.get("device_type")
@@ -425,37 +451,17 @@ def run_device_script():
                     "message": "AE and container are required in the request body",
                 }
             )
-        if process and process.poll() is None:
+        if device_name in processes and processes[device_name].is_alive():
             return jsonify({"status": "error", "message": "Script is already running"})
-        # if device_type in ["Lamp", "Buzzer"]:
-        #     # update in db
-        #     toggle_sensor(
-        #         group_name=device_group,
-        #         sensor_name=device_name,
-        #         sensor_type=device_type,
-        #     )
-        #     return jsonify(
-        #         {
-        #             "status": "success",
-        #             "message": "Device type is servo, no continuous publishing of data required",
-        #         }
-        #     )
 
-        process = Popen(
-            [
-                "python3",
-                "mockdevice.py",
-                device_name,
-                device_group,
-                device_type,
-                container,
-            ],
-            stdout=PIPE,
-            stderr=STDOUT,
+        stop_flags[device_name] = False
+        process_thread = threading.Thread(
+            target=run_mock_device,
+            args=(device_name, device_group, device_type, container),
+            daemon=True,
         )
-        output, _ = process.communicate()
-        print(output.decode())
-        processes[device_name] = process
+        process_thread.start()
+        processes[device_name] = process_thread
         # update in db
         toggle_sensor(
             group_name=device_group, sensor_name=device_name, sensor_type=device_type
@@ -486,40 +492,27 @@ def run_device_script():
 @app.route("/stopdevicescript", methods=["POST"])
 def stop_device_script():
     global processes
+    global stop_flags
+
     device_name = request.json.get("device_name")  # Get "ae" value from request body
     device_type = request.json.get("device_type")
     device_group = request.json.get("device_group")
-    process = processes.get(
-        device_name
-    )  # Get process associated with "ae" value from global dictionary
+
+    if device_name not in processes or not processes[device_name].is_alive():
+        return jsonify({"status": "error", "message": "Script is not running"})
     try:
-        # if device_type in ["Lamp", "Buzzer"]:
-        #     # update in db
-        #     toggle_sensor(
-        #         group_name=device_group,
-        #         sensor_name=device_name,
-        #         sensor_type=device_type,
-        #     )
-        #     return jsonify(
-        #         {
-        #             "status": "success",
-        #             "message": "Device type is servo, no continuous publishing of data required",
-        #         }
-        #     )
-        if process and process.poll() is None:
-            process.terminate()
-            process = None
-            # update in db
-            toggle_sensor(
-                group_name=device_group,
-                sensor_name=device_name,
-                sensor_type=device_type,
-            )
-            return jsonify(
-                {"status": "success", "message": "Mock device script stopped"}
-            )
-        else:
-            return jsonify({"status": "error", "message": "Script is not running"})
+        stop_flags[device_name] = True
+        processes[device_name].join()
+        del processes[device_name]
+        del stop_flags[device_name]
+
+        # update in db
+        toggle_sensor(
+            group_name=device_group,
+            sensor_name=device_name,
+            sensor_type=device_type,
+        )
+        return jsonify({"status": "success", "message": "Mock device script stopped"})
     except Exception as e:
         return jsonify(
             {
