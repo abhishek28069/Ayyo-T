@@ -2,12 +2,18 @@ import requests
 import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+from kafka import KafkaConsumer, KafkaProducer
+import time
+import threading
+
+
 import DBService as DB
 
 onem2m_api_base_url = "http://localhost:8069"
 
 app = Flask(__name__)
 CORS(app)
+
 
 
 @app.route("/api")
@@ -19,6 +25,14 @@ def index():
 def listGroups():
     print("Listing Groups...")
     db_res = dict(DB.getGroups())
+    print(f"Response: {db_res}")
+    return db_res
+
+@app.route("/api/list/controllers", methods=["GET"])
+def listControllers():
+    group = request.args.get("group_name")
+    print("Listing Groups...")
+    db_res = dict(DB.getControllersByGroup(group))
     print(f"Response: {db_res}")
     return db_res
 
@@ -73,6 +87,31 @@ def getHistoricData():
         return {"error": True, "msg": "Name is required"}
     return DB.getHistoricData(row_count, sensor_id)
 
+@app.route("/api/control", methods=['POST'])
+def control():
+    data = request.get_json()
+    group_name , control, to_email = data['group_name'], data['control'], data['to_email']
+    controllers = DB.getControllersByGroup(group_name)
+    email_body = ""
+    for row in controllers.data:
+        row_type = row["controller_type"]
+        if row_type not in control:
+            continue
+        if row["activated"] != control[row_type]:
+            DB.toggle_controller(row["id"], control[row_type])
+            # store in the email body
+            email_body += "toggled "+ row["controller_type"] + " in " + group_name
+            email_body += " on" if control[row_type] else " off"
+            email_body += "<br/>"
+    # check if the email body is present or not and send email
+    if email_body != "":
+        subject = "Device status update in "+group_name+" !"
+        message = email_body
+        if DB.send_email(to_email,subject,message):
+            print("mailed successfully")
+        else:
+            print("mail failed to send")
+    return email_body
 
 @app.route("/api/trigger")
 def trigger():
@@ -121,5 +160,15 @@ def listCustomGroups():
     return response
 
 
+def run_monitoring_thread():
+    def json_serializer(data):
+        return json.dumps(data).encode("utf-8")
+    producer=KafkaProducer(bootstrap_servers=['20.75.91.206:9092'],api_version=(0, 10, 1),
+                        value_serializer=json_serializer)
+    while True:
+        producer.send("sensor_manager_to_monitoring","scheduler is alive")
+        time.sleep(20)
+
 if __name__ == "__main__":
+    threading.Thread(target=run_monitoring_thread).start()
     app.run(port=2000, debug=True, host="0.0.0.0")

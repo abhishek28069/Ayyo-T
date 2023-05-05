@@ -21,6 +21,10 @@ build_and_tag "platform_ui" &
 build_and_tag "platform-backend" &
 build_and_tag "sensor_manager" &
 build_and_tag "sensormanager_frontend" &
+build_and_tag "deployer" &
+build_and_tag "deployer_master" &
+build_and_tag "scheduler" &
+build_and_tag "monitoring" &
 
 # Wait for all parallel processes to finish
 wait

@@ -1,26 +1,46 @@
-docker build -t onem2mserverimage .
-docker tag onem2mserverimage abhishek28069/unisense:onem2mserverimage
-docker push abhishek28069/unisense:onem2mserverimage
-docker pull abhishek28069/unisense:onem2mserverimage
+docker build -t deployer .
+docker tag deployer abhishek28069/unisense:deployer
+docker push abhishek28069/unisense:deployer
+docker pull abhishek28069/unisense:deployer
 
-docker build -t platformuiimage .
-docker tag platformuiimage abhishek28069/unisense:platformuiimage
-docker push abhishek28069/unisense:platformuiimage
-docker pull abhishek28069/unisense:platformuiimage
+docker build -t deployer_master .
+docker tag deployer_master abhishek28069/unisense:deployer_master
+docker push abhishek28069/unisense:deployer_master
+docker pull abhishek28069/unisense:deployer_master
 
-docker build -t platformbackendimage .
-docker tag platformbackendimage abhishek28069/unisense:platformbackendimage
-docker push abhishek28069/unisense:platformbackendimage
-docker pull abhishek28069/unisense:platformbackendimage
+docker build -t monitoring .
+docker tag monitoring abhishek28069/unisense:monitoring
+docker push abhishek28069/unisense:monitoring
+docker pull abhishek28069/unisense:monitoring
 
-docker build -t sensormanagerimage .
-docker tag sensormanagerimage abhishek28069/unisense:sensormanagerimage
-docker push abhishek28069/unisense:sensormanagerimage
-docker pull abhishek28069/unisense:sensormanagerimage
+docker build -t onem2m_server .
+docker tag onem2m_server abhishek28069/unisense:onem2m_server
+docker push abhishek28069/unisense:onem2m_server
+docker pull abhishek28069/unisense:onem2m_server
 
-docker build -t sensormanagerfrontendimage .
-docker tag sensormanagerfrontendimage abhishek28069/unisense:sensormanagerfrontendimage
-docker push abhishek28069/unisense:sensormanagerfrontendimage
-docker pull abhishek28069/unisense:sensormanagerfrontendimage
+docker build -t platform_ui .
+docker tag platform_ui abhishek28069/unisense:platform_ui
+docker push abhishek28069/unisense:platform_ui
+docker pull abhishek28069/unisense:platform_ui
+
+docker build -t platform-backend .
+docker tag platform-backend abhishek28069/unisense:platform-backend
+docker push abhishek28069/unisense:platform-backend
+docker pull abhishek28069/unisense:platform-backend
+
+docker build -t scheduler .
+docker tag scheduler abhishek28069/unisense:scheduler
+docker push abhishek28069/unisense:scheduler
+docker pull abhishek28069/unisense:scheduler
+
+docker build -t sensor_manager .
+docker tag sensor_manager abhishek28069/unisense:sensor_manager
+docker push abhishek28069/unisense:sensor_manager
+docker pull abhishek28069/unisense:sensor_manager
+
+docker build -t sensormanager_frontend .
+docker tag sensormanager_frontend abhishek28069/unisense:sensormanager_frontend
+docker push abhishek28069/unisense:sensormanager_frontend
+docker pull abhishek28069/unisense:sensormanager_frontend
 
 

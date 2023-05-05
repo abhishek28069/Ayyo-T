@@ -25,6 +25,10 @@ def get_rand_data(device_type):
         return generate_fake_luminosity()
     elif device_type == "Power":
         return generate_fake_electricity_consumption()
+    elif device_type == "Solar":
+        return generate_fake_solar_energy()
+    elif device_type == "Air Quality":
+        return generate_fake_air_quality()
     elif device_type == "Presence":
         return generate_fake_presence()
     elif device_type == "Lamp":

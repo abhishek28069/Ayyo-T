@@ -42,7 +42,7 @@ export const Register = () => {
               onChange={setRole}
               data={["sensor-registrar", "platform-manager", "app-developer", "end-user"]}
               className="text-[#0d0d0d]"
-              color="dark"
+              color="teal"
             />
           </div>
           <div className="flex flex-col gap-2 my-2">

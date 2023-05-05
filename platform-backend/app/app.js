@@ -8,6 +8,7 @@ const fetch = require("node-fetch-commonjs");
 const Kafka = require("node-rdkafka");
 const { createClient } = require("@supabase/supabase-js");
 const { validateJSON } = require("./utils/validateJson");
+const { startMonitoring } = require("./utils/monitor");
 
 const app = express();
 const upload = multer();
@@ -224,6 +225,8 @@ app.post("/schedule-app", async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 });
+
+startMonitoring();
 
 app.listen(3001, () => {
   console.log("Platform Server is running on port 3001");

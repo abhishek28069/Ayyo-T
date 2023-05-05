@@ -47,7 +47,7 @@ const DeviceCard = ({ card, onUnplug }) => {
   };
 
   const handleFetchLiveData = () => {
-    if (isFetching) {
+    if (isFetching || !card.activated) {
       setIsFetching(false);
       return;
     } else {
@@ -60,12 +60,12 @@ const DeviceCard = ({ card, onUnplug }) => {
   };
 
   return (
-    <Box key={card.key} bg="gray.200" p={4} borderRadius="md" boxShadow="md">
-      <Box mb={2} fontWeight="bold">
-        {card.type}
+    <div key={card.id} className="p-4 rounded-md shadow-2xl bg-slate-800">
+      <Box mb={2} fontWeight="bold" fontSize={"1.5rem"}>
+        {card.name}
       </Box>
-      <Box>Device Name: {card.name}</Box>
-      <Box>Device Group: {card.group}</Box>
+      <Box>Device Type: {card.type}</Box>
+      <Box>Device Location: {card.group}</Box>
       <HStack spacing="16px">
         <Box>
           <Button mt={4} colorScheme={card.activated ? "red" : "green"} onClick={card.activated ? handleDeactivate : handleActivate}>
@@ -100,7 +100,7 @@ const DeviceCard = ({ card, onUnplug }) => {
         // </Tabs>
         <LiveGraph sensor_name={card.name} />
       )}
-    </Box>
+    </div>
   );
 };
 

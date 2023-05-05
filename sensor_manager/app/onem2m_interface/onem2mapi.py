@@ -6,7 +6,9 @@ import random
 import threading
 import requests
 from subprocess import Popen, PIPE, STDOUT
-
+from kafka import KafkaConsumer, KafkaProducer
+import time
+import threading
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -528,6 +530,15 @@ def stop_device_script():
 def fetch_devices():
     return jsonify(fetch_sensors())
 
+def run_monitoring_thread():
+    def json_serializer(data):
+        return json.dumps(data).encode("utf-8")
+    producer=KafkaProducer(bootstrap_servers=['20.75.91.206:9092'],api_version=(0, 10, 1),
+                        value_serializer=json_serializer)
+    while True:
+        producer.send("sensor_manager_to_monitoring","scheduler is alive")
+        time.sleep(20)
 
 if __name__ == "__main__":
+    threading.Thread(target=run_monitoring_thread).start()
     app.run(port=8069, host="0.0.0.0")

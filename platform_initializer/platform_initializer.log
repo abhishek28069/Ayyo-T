@@ -1,0 +1,127 @@
+2023-05-05 11:05:35,682 - INFO - <BrokerConnection node_id=bootstrap-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: connecting to 20.75.91.206:9092 [('20.75.91.206', 9092) IPv4]
+2023-05-05 11:05:35,682 - INFO - Probing node bootstrap-0 broker version
+2023-05-05 11:05:35,942 - INFO - <BrokerConnection node_id=bootstrap-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: Connection complete.
+2023-05-05 11:05:36,294 - INFO - Broker version identified as 2.5.0
+2023-05-05 11:05:36,294 - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2023-05-05 11:05:36,294 - INFO - Updating subscribed topics to: ('monitoring_to_platform_initializer',)
+2023-05-05 11:05:36,538 - INFO - Group coordinator for consumer-group-a is BrokerMetadata(nodeId='coordinator-0', host='20.75.91.206', port=9092, rack=None)
+2023-05-05 11:05:36,539 - INFO - Discovered coordinator coordinator-0 for group consumer-group-a
+2023-05-05 11:05:36,539 - INFO - Starting new heartbeat thread
+2023-05-05 11:05:36,540 - INFO - Revoking previously assigned partitions set() for group consumer-group-a
+2023-05-05 11:05:36,540 - INFO - <BrokerConnection node_id=coordinator-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: connecting to 20.75.91.206:9092 [('20.75.91.206', 9092) IPv4]
+2023-05-05 11:05:36,841 - INFO - <BrokerConnection node_id=coordinator-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: Connection complete.
+2023-05-05 11:05:36,842 - INFO - <BrokerConnection node_id=bootstrap-0 host=20.75.91.206:9092 <connected> [IPv4 ('20.75.91.206', 9092)]>: Closing connection. 
+2023-05-05 11:05:36,942 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:05:37,189 - INFO - Elected group leader -- performing partition assignments using range
+2023-05-05 11:05:37,190 - INFO - <BrokerConnection node_id=0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: connecting to 20.75.91.206:9092 [('20.75.91.206', 9092) IPv4]
+2023-05-05 11:05:37,425 - INFO - <BrokerConnection node_id=0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: Connection complete.
+2023-05-05 11:05:37,437 - INFO - Successfully joined group consumer-group-a with generation 110
+2023-05-05 11:05:37,437 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:05:37,437 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:05:40,695 - WARNING - Heartbeat failed for group consumer-group-a because it is rebalancing
+2023-05-05 11:05:40,944 - INFO - Revoking previously assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:05:40,945 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:05:41,192 - INFO - Elected group leader -- performing partition assignments using range
+2023-05-05 11:05:41,193 - WARNING - No partition metadata for topic deployer_master_to_monitoring
+2023-05-05 11:05:41,203 - WARNING - No partition metadata for topic sensor_manager_to_monitoring
+2023-05-05 11:05:41,204 - WARNING - No partition metadata for topic platform_backend_to_monitoring
+2023-05-05 11:05:41,204 - WARNING - No partition metadata for topic scheduler_to_monitoring
+2023-05-05 11:05:41,204 - WARNING - No partition metadata for topic deployer_to_monitoring
+2023-05-05 11:05:41,204 - WARNING - No partition metadata for topic scheduled_apps3
+2023-05-05 11:05:41,470 - INFO - Successfully joined group consumer-group-a with generation 111
+2023-05-05 11:05:41,470 - WARNING - Topic platform_backend_to_monitoring is not available during auto-create initialization
+2023-05-05 11:05:41,470 - WARNING - Topic deployer_master_to_monitoring is not available during auto-create initialization
+2023-05-05 11:05:41,470 - WARNING - Topic deployer_to_monitoring is not available during auto-create initialization
+2023-05-05 11:05:41,470 - WARNING - Topic sensor_manager_to_monitoring is not available during auto-create initialization
+2023-05-05 11:05:41,470 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:05:41,470 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:05:41,470 - INFO - Revoking previously assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:05:41,471 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:05:45,081 - INFO - Elected group leader -- performing partition assignments using range
+2023-05-05 11:05:45,082 - WARNING - No partition metadata for topic deployer_master_to_monitoring
+2023-05-05 11:05:45,082 - WARNING - No partition metadata for topic sensor_manager_to_monitoring
+2023-05-05 11:05:45,082 - WARNING - No partition metadata for topic platform_backend_to_monitoring
+2023-05-05 11:05:45,082 - WARNING - No partition metadata for topic deployer_to_monitoring
+2023-05-05 11:05:45,354 - INFO - Successfully joined group consumer-group-a with generation 112
+2023-05-05 11:05:45,354 - WARNING - Topic platform_backend_to_monitoring is not available during auto-create initialization
+2023-05-05 11:05:45,354 - WARNING - Topic deployer_master_to_monitoring is not available during auto-create initialization
+2023-05-05 11:05:45,354 - WARNING - Topic deployer_to_monitoring is not available during auto-create initialization
+2023-05-05 11:05:45,354 - WARNING - Topic sensor_manager_to_monitoring is not available during auto-create initialization
+2023-05-05 11:05:45,354 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:05:45,354 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:06:59,352 - INFO - message received from monitoring
+2023-05-05 11:06:59,352 - INFO - {'module': 'deployer_master'}
+2023-05-05 11:06:59,354 - INFO - message received from monitoring
+2023-05-05 11:06:59,354 - INFO - {'module': 'deployer'}
+2023-05-05 11:06:59,356 - INFO - message received from monitoring
+2023-05-05 11:06:59,356 - INFO - {'module': 'platform_backend'}
+2023-05-05 11:06:59,359 - INFO - message received from monitoring
+2023-05-05 11:06:59,360 - INFO - {'module': 'sensor_manager'}
+2023-05-05 11:07:12,765 - WARNING - Heartbeat failed for group consumer-group-a because it is rebalancing
+2023-05-05 11:07:13,012 - INFO - Revoking previously assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:07:13,012 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:07:14,815 - INFO - Elected group leader -- performing partition assignments using range
+2023-05-05 11:07:14,816 - WARNING - No partition metadata for topic deployer_to_monitoring
+2023-05-05 11:07:14,816 - WARNING - No partition metadata for topic sensor_manager_to_monitoring
+2023-05-05 11:07:14,816 - WARNING - No partition metadata for topic deployer_master_to_monitoring
+2023-05-05 11:07:14,816 - WARNING - No partition metadata for topic platform_backend_to_monitoring
+2023-05-05 11:07:15,086 - INFO - Successfully joined group consumer-group-a with generation 113
+2023-05-05 11:07:15,086 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:07:15,086 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:07:15,087 - INFO - Revoking previously assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:07:15,087 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:07:18,942 - INFO - Elected group leader -- performing partition assignments using range
+2023-05-05 11:07:19,210 - INFO - Successfully joined group consumer-group-a with generation 114
+2023-05-05 11:07:19,211 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:07:19,211 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:07:46,960 - WARNING - Heartbeat failed for group consumer-group-a because it is rebalancing
+2023-05-05 11:07:47,208 - INFO - Revoking previously assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:07:47,208 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:07:47,478 - INFO - Elected group leader -- performing partition assignments using range
+2023-05-05 11:07:47,737 - INFO - Successfully joined group consumer-group-a with generation 115
+2023-05-05 11:07:47,737 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:07:47,738 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:07:47,738 - INFO - Revoking previously assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:07:47,738 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:07:51,604 - INFO - Elected group leader -- performing partition assignments using range
+2023-05-05 11:07:51,873 - INFO - Successfully joined group consumer-group-a with generation 116
+2023-05-05 11:07:51,874 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:07:51,874 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:08:40,491 - INFO - message received from monitoring
+2023-05-05 11:08:40,491 - INFO - {'module': 'scheduler'}
+2023-05-05 11:08:43,326 - WARNING - Heartbeat failed for group consumer-group-a because it is rebalancing
+2023-05-05 11:08:43,572 - INFO - Revoking previously assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:08:43,572 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:13:48,631 - WARNING - <BrokerConnection node_id=coordinator-0 host=20.75.91.206:9092 <connected> [IPv4 ('20.75.91.206', 9092)]> timed out after 305000 ms. Closing connection.
+2023-05-05 11:13:48,631 - INFO - <BrokerConnection node_id=coordinator-0 host=20.75.91.206:9092 <connected> [IPv4 ('20.75.91.206', 9092)]>: Closing connection. [Error 7] RequestTimedOutError: Request timed out after 305000 ms
+2023-05-05 11:13:48,631 - WARNING - Node coordinator-0 connection failed -- refreshing metadata
+2023-05-05 11:13:48,631 - ERROR - Error sending JoinGroupRequest_v2 to node coordinator-0 [[Error 7] RequestTimedOutError: Request timed out after 305000 ms]
+2023-05-05 11:13:48,631 - WARNING - Marking the coordinator dead (node coordinator-0) for group consumer-group-a: [Error 7] RequestTimedOutError: Request timed out after 305000 ms.
+2023-05-05 11:13:49,096 - INFO - Group coordinator for consumer-group-a is BrokerMetadata(nodeId='coordinator-0', host='20.75.91.206', port=9092, rack=None)
+2023-05-05 11:13:49,096 - INFO - Discovered coordinator coordinator-0 for group consumer-group-a
+2023-05-05 11:13:49,096 - WARNING - Marking the coordinator dead (node coordinator-0) for group consumer-group-a: Node Disconnected.
+2023-05-05 11:13:49,096 - INFO - <BrokerConnection node_id=coordinator-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: connecting to 20.75.91.206:9092 [('20.75.91.206', 9092) IPv4]
+2023-05-05 11:13:49,337 - INFO - <BrokerConnection node_id=coordinator-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: Connection complete.
+2023-05-05 11:13:49,386 - INFO - Group coordinator for consumer-group-a is BrokerMetadata(nodeId='coordinator-0', host='20.75.91.206', port=9092, rack=None)
+2023-05-05 11:13:49,386 - INFO - Discovered coordinator coordinator-0 for group consumer-group-a
+2023-05-05 11:13:49,386 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:13:49,642 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:13:52,962 - INFO - Successfully joined group consumer-group-a with generation 120
+2023-05-05 11:13:52,962 - INFO - Updated partition assignment: []
+2023-05-05 11:13:52,962 - INFO - Setting newly assigned partitions set() for group consumer-group-a
+2023-05-05 11:13:56,252 - WARNING - Heartbeat failed for group consumer-group-a because it is rebalancing
+2023-05-05 11:13:56,252 - INFO - Revoking previously assigned partitions set() for group consumer-group-a
+2023-05-05 11:13:56,252 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:13:57,142 - INFO - Successfully joined group consumer-group-a with generation 121
+2023-05-05 11:13:57,142 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:13:57,142 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:15:26,526 - INFO - message received from monitoring
+2023-05-05 11:15:26,526 - INFO - {'module': 'deployer'}
+2023-05-05 11:15:48,921 - WARNING - Heartbeat failed for group consumer-group-a because it is rebalancing
+2023-05-05 11:15:49,271 - INFO - Revoking previously assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-05 11:15:49,271 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:16:15,049 - INFO - (Re-)joining group consumer-group-a
+2023-05-05 11:16:15,406 - INFO - Elected group leader -- performing partition assignments using range
+2023-05-05 11:16:15,801 - INFO - Successfully joined group consumer-group-a with generation 123
+2023-05-05 11:16:15,802 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-05 11:16:15,802 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a

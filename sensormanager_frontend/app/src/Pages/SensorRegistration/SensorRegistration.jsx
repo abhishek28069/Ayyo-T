@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "../../Components/Navbar/Navbar";
 import DeviceCard from "../../Components/DeviceCard/DeviceCard";
+import { Controllers } from "../../Components/Controllers/Controllers";
 
 const onem2m_api_base_url = "http://localhost:8069";
 const onem2m_base_url = "http://onem2m_server:5089";
@@ -31,10 +32,12 @@ const SensorRegistration = () => {
   const [cards, setCards] = useState([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const types = ["SELECT", "Temperature", "Humidity", "Luminosity", "Power", "Presence", "Lamp", "Buzzer"];
+  const types = ["SELECT", "Temperature", "Air Quality", "Solar", "Humidity", "Luminosity", "Power", "Presence", "Lamp", "Buzzer"];
 
   const description = {
     Temperature: '["Timestamp", "Temperature in celsius"]',
+    "Air Quality": '["Timestamp", "Air Quality in PPM"]',
+    Solar: '["Timestamp", "Solar Energy Generation in kilowatt-hour"]',
     Humidity: '["Timestamp", "Humidity in percent"]',
     Luminosity: '["Timestamp", "Luminosity in lux"]',
     Power: '["Timestamp", "Power consumption in kilowatt-hour"]',
@@ -151,6 +154,7 @@ const SensorRegistration = () => {
           group: s.group_name,
           desc: s.description,
           activated: s.activated,
+          id: s.id,
         }));
       });
     };
@@ -167,7 +171,7 @@ const SensorRegistration = () => {
   }, []);
 
   return (
-    <Container my={6}>
+    <div className="w-screen min-h-screen pt-24 text-blue-200 bg-slate-950 no-scrollbar">
       <Navbar buttonDefinition={handleDrawerOpen} buttonName="Register Sensor" />
       <Box>
         <Drawer isOpen={isDrawerOpen} placement="left" onClose={handleDrawerClose}>
@@ -205,13 +209,15 @@ const SensorRegistration = () => {
           </DrawerContent>
         </Drawer>
       </Box>
-      <Divider my={6} />
-      <Grid id="cards" templateColumns="repeat(1, minmax(200px, 1fr))" gap={4}>
-        {cards.map((card, key) => (
-          <DeviceCard key={key} card={card} onUnplug={handleUnplug} />
-        ))}
-      </Grid>
-    </Container>
+      <Controllers />
+      <div className="p-6 no-scrollbar">
+        <div className="grid grid-cols-3 gap-4 no-scrollbar" id="cards">
+          {cards.map((card) => (
+            <DeviceCard key={card.id} card={card} onUnplug={handleUnplug} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

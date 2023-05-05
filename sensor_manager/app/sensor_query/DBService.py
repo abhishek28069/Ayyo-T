@@ -1,9 +1,16 @@
 import json, random
 from supabase import create_client
+import sib_api_v3_sdk
+from sib_api_v3_sdk.rest import ApiException
 
 url = "https://zakntpuxbdegdkyvdzkw.supabase.co"
 key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpha250cHV4YmRlZ2RreXZkemt3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEyODIyNjEsImV4cCI6MTk5Njg1ODI2MX0.qJp48cSwfb0QKFOE-TAB22yJN_m6rU6kK5Ers_GgcHM"
 supabase = create_client(url, key)
+
+# send in blue setup (smtp)
+configuration = sib_api_v3_sdk.Configuration()
+configuration.api_key['api-key'] = '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'
+
 
 def getGroups():
      response = supabase.table('sensor_registry').select('group_name', count="exact").execute()
@@ -126,3 +133,26 @@ def getCustomGroups(requirements):
           if(res != False):
                response[group] = res
      return response
+
+
+def getControllersByGroup(group):
+     print('Getting sensor by group',group)
+     response = supabase.table('controller_registry').select('*', count="exact").eq('group_name',group).execute()
+     return response
+
+def toggle_controller(id, state):
+    supabase.table("controller_registry").update({"activated": state}).eq("id", id).execute()
+
+def send_email(to_email, subject, message):
+    api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
+    subject = subject
+    sender = {"name":"Abhishek","email":"abhishek28069@gmail.com"}
+    html_content = "<html><body>"+message+"</body></html>"
+    to = [{"email":to_email, "name": "User"}]
+    send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(to=to, html_content=html_content, sender=sender, subject=subject)
+    try:
+        api_instance.send_transac_email(send_smtp_email)
+        return True
+    except ApiException as e:
+        print("Exception when calling SMTPApi->sendTransacEmail: %s\n" % e)
+        return False

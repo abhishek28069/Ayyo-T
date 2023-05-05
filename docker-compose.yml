@@ -67,6 +67,41 @@ services:
     networks:
       - my-network
 
+  scheduler:
+    image: abhishek28069/unisense:scheduler
+    container_name: scheduler
+    hostname: scheduler
+    networks:
+      - my-network
+
+  deployer:
+    image: abhishek28069/unisense:deployer
+    container_name: deployer
+    hostname: deployer
+    ports:
+      - "8081:8081"
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - my-network
+
+  deployer_master:
+    image: abhishek28069/unisense:deployer_master
+    container_name: deployer_master
+    hostname: deployer_master
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+
+  monitoring:
+    image: abhishek28069/unisense:monitoring
+    container_name: monitoring
+    hostname: monitoring
+    networks:
+      - my-network
+
+
 networks:
   my-network:
 

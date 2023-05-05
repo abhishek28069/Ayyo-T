@@ -83,3 +83,32 @@ def generate_fake_buzzer():
 
     # Return the occupancy sensor value
     return is_occupied
+
+# Generate solar energy generation data kWh
+def generate_fake_solar_energy():
+    # Define the solar energy generation range and precision
+    MIN_ENERGY = 0
+    MAX_ENERGY = 1000
+    PRECISION = 1
+
+    # Generate a random solar energy generation value
+    energy = round(
+        random.uniform(MIN_ENERGY, MAX_ENERGY), int(abs(PRECISION))
+    )
+    # Return the solar energy generation value
+    return energy
+
+# Generate air quality data ppm
+def generate_fake_air_quality():
+    # Define the air quality range and precision
+    MIN_AIR_QUALITY = 0
+    MAX_AIR_QUALITY = 500
+    PRECISION = 1
+
+    # Generate a random air quality value
+    air_quality = round(
+        random.uniform(MIN_AIR_QUALITY, MAX_AIR_QUALITY), int(abs(PRECISION))
+    )
+
+    # Return the air quality value
+    return air_quality

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import "./index.css";
 import SensorRegistration from "./Pages/SensorRegistration/SensorRegistration";
 
 function App() {
