@@ -25,60 +25,68 @@ def send_restart_msg(msg):
     except errors.KafkaError as e:
         print('Failed to send message:', e)
     finally:
-        producer.flush()
-        producer.close()
         time.sleep(20)
 
 def monitoring_deployer():
     consumer=KafkaConsumer("deployer_to_monitoring",bootstrap_servers=kafka_url,
                            auto_offset_reset='latest',group_id='consumer-group-a',
                            consumer_timeout_ms = 80000)
-    for msg in consumer:
-        logging.info("message received from deployer")
-    msg = {"module": "deployer"}
-    send_restart_msg(msg)
-    monitoring_deployer()
+    def recurr():
+        for msg in consumer:
+            logging.info("message received from deployer")
+        msg = {"module": "deployer"}
+        send_restart_msg(msg)
+        recurr()
+    recurr()
     
 def monitoring_deployer_master():
     consumer=KafkaConsumer("deployer_master_to_monitoring",bootstrap_servers=kafka_url,
-                           auto_offset_reset='latest',group_id='consumer-group-a',
+                           auto_offset_reset='latest',group_id='consumer-group-b',
                            consumer_timeout_ms = 80000)
-    for msg in consumer:
-        logging.info("message received from deployer_master")
-    msg = {"module": "deployer_master"}
-    send_restart_msg(msg)
-    monitoring_deployer_master()
+    def recurr():
+        for msg in consumer:
+            logging.info("message received from deployer master")
+        msg = {"module": "deployer_master"}
+        send_restart_msg(msg)
+        recurr()
+    recurr()
 
 def monitoring_scheduler():
     consumer=KafkaConsumer("scheduler_to_monitoring",bootstrap_servers=kafka_url,
-                           auto_offset_reset='latest',group_id='consumer-group-a',
+                           auto_offset_reset='latest',group_id='consumer-group-c',
                            consumer_timeout_ms = 80000)
-    for msg in consumer:
-        logging.info("message received from scheduler")
-    msg = {"module": "scheduler"}
-    send_restart_msg(msg)
-    monitoring_scheduler()
+    def recurr():
+        for msg in consumer:
+            logging.info("message received from scheduler")
+        msg = {"module": "scheduler"}
+        send_restart_msg(msg)
+        recurr()
+    recurr()
     
 
 def monitoring_sensor_manager():
     consumer=KafkaConsumer("sensor_manager_to_monitoring",bootstrap_servers=kafka_url,
-                           auto_offset_reset='latest',group_id='consumer-group-a',
+                           auto_offset_reset='latest',group_id='consumer-group-d',
                            consumer_timeout_ms = 80000)
-    for msg in consumer:
-        logging.info("message received from sensor_manager")
-    msg = {"module": "sensor_manager"}
-    send_restart_msg(msg)
-    monitoring_sensor_manager()
+    def recurr():
+        for msg in consumer:
+            logging.info("message received from sensor_manager")
+        msg = {"module": "sensor_manager"}
+        send_restart_msg(msg)
+        recurr()
+    recurr()
 
 def monitoring_platform_backend():
     consumer=KafkaConsumer("platform_backend_to_monitoring",bootstrap_servers=kafka_url,
-                           auto_offset_reset='latest',group_id='consumer-group-a',
+                           auto_offset_reset='latest',group_id='consumer-group-e',
                            consumer_timeout_ms = 80000)
-    for msg in consumer:
-        logging.info("message received from platform_backend")
-    msg = {"module": "platform_backend"}
-    send_restart_msg(msg)
-    monitoring_platform_backend()
+    def recurr():
+        for msg in consumer:
+            logging.info("message received from platform_backend")
+        msg = {"module": "platform_backend"}
+        send_restart_msg(msg)
+        recurr()
+    recurr()
 
 
 
