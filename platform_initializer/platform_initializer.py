@@ -25,7 +25,7 @@ def platform_re_init():
 
 def platform_init():
     os.system("cd ..")
-    os.system('docker compose up > /dev/null 2>&1 &')
+    os.system('docker compose up')
 
 
 if __name__ == "__main__":

@@ -14,9 +14,9 @@ validateJSON = (data) => {
       return false;
     }
     // Check if sensors is an object with only the allowed keys
-    const allowedKeys = ["Temperature", "Humidity", "Luminosity", "Power", "Presence", "Lamp", "Buzzer"];
+    const allowedKeys = ["Temperature", "Humidity", "Luminosity", "Power", "Presence", "Lamp", "Buzzer", "AQI", "SL", "EM"];
     const sensorKeys = Object.keys(json.sensors);
-    if (sensorKeys.length !== allowedKeys.length || !sensorKeys.every((key) => allowedKeys.includes(key))) {
+    if (!sensorKeys.every((key) => allowedKeys.includes(key))) {
       return false;
     }
     // Check if sensors has string keys and number values

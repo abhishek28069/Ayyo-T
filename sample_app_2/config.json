@@ -1,0 +1,10 @@
+{
+  "app_name": "demo_3",
+  "app_description": "A cool app to know when it is going to be cool and when it is going to be hot",
+  "cmd": ["npm install", "npm run dev"],
+  "sensors": {
+    "AQI": 2,
+    "SL": 2,
+    "EM": 1
+  }
+}

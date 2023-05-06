@@ -53,6 +53,28 @@ export const EndUserNew = () => {
     setLoading(true);
     // fetch groups and filter based on selectedApp
     console.log(selectedApp.app_config);
+    if (selectedApp.app_config.sensors["AQI"] !== undefined) {
+      setBindings(() => ({
+        KH03: {
+          AQI: ["SR-AQ-KH03-00", "SR-AQ-KH03-01"],
+          SL: ["SR-OC-GW-KH00-00", "SR-OC-GW-KH00-01"],
+          EM: ["SR-AC-KH03-00"],
+        },
+        KH00: {
+          AQI: ["SR-AQ-KH00-00", "SR-AQ-KH00-01"],
+          SL: ["SR-OC-GW-KH00-00", "SR-OC-GW-KH00-01"],
+          EM: ["SR-AC-KH00-00"],
+        },
+        KH95: {
+          AQI: ["SR-AQ-KH95-01", "SR-AQ-KH95-02"],
+          SL: ["SR-OC-GW-KH95-00", "SR-OC-GW-KH95-01"],
+          EM: ["SR-AC-KH95-01"],
+        },
+      }));
+      setLoading(false);
+      secondRef.current.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
     try {
       const response = await fetch(platform_backend_base_url + "/sensor-bindings", {
         method: "POST",
