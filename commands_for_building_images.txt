@@ -28,6 +28,11 @@ docker tag platform-backend abhishek28069/unisense:platform-backend
 docker push abhishek28069/unisense:platform-backend
 docker pull abhishek28069/unisense:platform-backend
 
+docker build -t proxy_server .
+docker tag proxy_server abhishek28069/unisense:proxy_server
+docker push abhishek28069/unisense:proxy_server
+docker pull abhishek28069/unisense:proxy_server
+
 docker build -t scheduler .
 docker tag scheduler abhishek28069/unisense:scheduler
 docker push abhishek28069/unisense:scheduler

@@ -5,7 +5,7 @@ import { Layout } from "./components/Layout";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { AppDeveloper } from "./pages/AppDeveloper";
-import { SensorRegistrar } from "./pages/SensorRegistrar";
+import  SensorRegistrar  from "./pages/SensorRegistrar";
 import { PlatformManager } from "./pages/PlatformManager";
 import { EndUser } from "./pages/EndUser";
 import { NotFound } from "./pages/NotFound";
