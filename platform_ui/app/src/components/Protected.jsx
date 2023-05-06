@@ -7,11 +7,11 @@ export const Protected = ({ redirectTo }) => {
   const { pathname } = useLocation();
   const token = localStorage.getItem("token");
   const path_list = {
-    "sensor-registrar": "sensor-registrar",
-    "app-developer": "app-developer",
-    "platform-manager": "platform-manager",
-    "end-user": "end-user",
+    "sensor-registrar": ["sensor-registrar"],
+    "app-developer": ["app-developer"],
+    "platform-manager": ["platform-manager"],
+    "end-user": ["end-user", "end-user/new"],
   };
-  return isAuthenticated && pathname.slice(1) === path_list[authRole] ? <Outlet /> : <Navigate to={redirectTo} />;
+  return isAuthenticated && path_list[authRole].includes(pathname.slice(1)) ? <Outlet /> : <Navigate to={redirectTo} />;
   // return <Outlet />;
 };

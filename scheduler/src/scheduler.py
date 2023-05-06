@@ -41,7 +41,7 @@ def cron(app_id,instance_id,start_time,end_time,sensor_bindings,day):
         schedule.every().sunday.at(end_time).do(deployer_message, app_id,instance_id,sensor_bindings,1)
 
 #app to be run by deployer. Communication medium to be made later
-def deployer_message(app_id,instance_id,sensor_bindings,flag):
+def deployer_message(app_id,app_name,instance_id,sensor_bindings,flag):
     # print("hello")
     logging.info("in deployer function")
     if flag == 0:
@@ -49,38 +49,41 @@ def deployer_message(app_id,instance_id,sensor_bindings,flag):
         #line to be activated when kafka is configured
         data={
             "app_id":app_id,
+            "app_name":app_name,
             "instance_id":instance_id,
             "type":"start",
             "sensor_bindings":sensor_bindings
 
         }
-        producer.send('scheduler_to_deployer2', data)
+        producer.send('scheduler_to_deployer3', data)
         # data[] = scheduling info & instance ID
     else:
         data={
             "app_id":app_id,
+            "app_name":app_name,
             "instance_id":instance_id,
             "type":"stop",
             "sensor_bindings":sensor_bindings
         }
         logging.info(str(app_id) + " End sent to deployer")
-        producer.send('scheduler_to_deployer2', data)
+        producer.send('scheduler_to_deployer3', data)
 
 def decode_json(app_crons):
     logging.info("decoding_json")
     print(app_crons)
     logging.info(app_crons)
     app_id = app_crons["app_id"]
-    sched_flag = app_crons["sched_flag"]
-    sched_info = app_crons["schedule_info"]["timings"]
+    app_name = app_crons["app_name"]
     instance_id=app_crons["instance_id"]
-    sensor_bindings=app_crons["sensor_bindings"]
     user_kill=app_crons["user_kill"]
-    if sched_flag == 0:
-        deployer_message(app_id,instance_id,sensor_bindings,0)
-        return
     if user_kill == 1:
-        deployer_message(app_id,instance_id,sensor_bindings,1)
+        deployer_message(app_id,app_name,instance_id,"",1)
+        return
+    sched_info = app_crons["schedule_info"]["timings"]
+    sched_flag = app_crons["sched_flag"]
+    sensor_bindings=app_crons["sensor_bindings"]
+    if sched_flag == 0:
+        deployer_message(app_id,app_name,instance_id,sensor_bindings,0)
         return
     else:
         logging.info("hellooo")

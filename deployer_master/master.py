@@ -5,12 +5,11 @@ from kafka import KafkaConsumer, KafkaProducer
 import json
 import threading
 import requests
-import uuid
 import time
 
 
 # consumer = KafkaConsumer('scheduler_to_deployer', bootstrap_servers=kafka_server, enable_auto_commit=True)
-consumer = KafkaConsumer('scheduler_to_deployer2', bootstrap_servers=kafka_server, enable_auto_commit=True)
+consumer = KafkaConsumer('scheduler_to_deployer3', bootstrap_servers=kafka_server, enable_auto_commit=True)
 
 
 @app.route('/')
@@ -19,7 +18,7 @@ def index():
 
 def deploy_app(message):
     application_id = message['app_id']
-    # app_name = message['app_name']
+    app_name = message['app_name']
     instance_id = message['instance_id']
     sensor_bindings = message['sensor_bindings']
 
@@ -27,7 +26,7 @@ def deploy_app(message):
         db.insert({
                 "instance_id": instance_id,
                 "container_id": "",
-                "app_name": "APP-1",
+                "app_name": app_name,
                 "app_id": application_id,
                 "status": "init",
                 }).execute()
@@ -54,8 +53,9 @@ def stop_instance(message):
         logging.info("Couldn't find a row with the given instance id to be stoped")
         return {"InstanceID": instance_id, "Status": "not found"}
 
-    if instance['status'] != 'running':
-        return {"InstanceID": instance_id, "Status": "not running"}
+    # if instance['status'] != 'complete':
+    #     return {"InstanceID": instance_id, "Status": "not running"}
+    print("trying to send the stop reques to slave")
     res = requests.post(f'{module_config["load_balancer"]}stop-instance', json={
                         'InstanceID': instance_id, 'ContainerID': instance['container_id']})
     return res.text
@@ -70,7 +70,9 @@ def platform_req_thread():
             print(message)
             threading.Thread(target=deploy_app, args=(message,)).start()
         elif message['type'] =='stop':
+            print(message)
             logging.info("instance stop request recieved")
+            logging.info(message)
             threading.Thread(target=stop_instance, args=(message,)).start()
             
 def run_monitoring_thread():

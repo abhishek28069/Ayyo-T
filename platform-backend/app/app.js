@@ -208,16 +208,16 @@ app.post("/sensor-bindings", async (req, res) => {
 });
 
 app.post("/schedule-app", async (req, res) => {
-  const { enduser_name, app_id, schedule_info, sensor_binding, location, sched_flag } = req.body;
+  const { enduser_name, app_id, schedule_info, sensor_binding, location, sched_flag, user_kill, app_name } = req.body;
   try {
-    const instance_id = uuidv4();
+    const instance_id = req.body?.instance_id || uuidv4();
     const { data, error } = await supabase
       .from("scheduled_apps")
       .insert([{ location, enduser_name, app_id, instance_id, schedule_info, sensor_bindings: sensor_binding, sched_flag }]);
     if (error) {
       throw error;
     }
-    publishMessage({ location, enduser_name, app_id, instance_id, schedule_info, sensor_bindings: sensor_binding, sched_flag });
+    publishMessage({ location, enduser_name, app_id, instance_id, schedule_info, sensor_bindings: sensor_binding, sched_flag, user_kill, app_name });
     // publishZipFile(app_id);
     return res.status(200).json({ message: "App scheduled successfully" });
   } catch (error) {

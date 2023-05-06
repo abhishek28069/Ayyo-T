@@ -21,4 +21,3 @@ EXPOSE 5173
 USER root
 
 CMD ["npm", "run", "dev"]
-

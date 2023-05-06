@@ -9,7 +9,6 @@ from config import app, db, module_config, bucket
 from kafka import KafkaProducer
 import threading
 import socket
-import random
 
 
 
@@ -202,6 +201,7 @@ def deploy_app():
 
 @app.route('/stop-instance', methods=['POST'])
 def stop_instance():
+    print("recieved stop request at slave")
     instance_id = request.json['InstanceID']
     container_id = request.json['ContainerID']
     threading.Thread(target=stop_instance_thread, kwargs={
