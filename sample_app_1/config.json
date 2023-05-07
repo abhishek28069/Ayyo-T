@@ -1,0 +1,15 @@
+{
+  "app_name": "dummy_data_app",
+  "app_description": "A cool app to know when it is going to be cool and when it is going to be hot",
+  "cmd": ["npm install", "npm run dev"],
+  "sensors": {
+    "Temperature": 1,
+    "Humidity": 0,
+    "Luminosity": 1,
+    "Power": 0,
+    "Presence": 1,
+    "Lamp": 2
+    ,
+    "Buzzer": 0
+  }
+}
