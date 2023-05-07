@@ -1,0 +1,7 @@
+{
+	"client_id": "kafka-producer",
+	"kafka_ip": "20.75.91.206",
+	"kafka_port": "9092",
+	"api_version_request": "true",
+	"message_max_bytes": 20971520
+}

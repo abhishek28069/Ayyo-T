@@ -1,0 +1,6 @@
+{
+	"ldap_base_url": "ldap://openldap",
+	"ldap_port": "389",
+	"sensor_query_base_url": "http://sensor_manager",
+	"sensor_port": "2000"
+}

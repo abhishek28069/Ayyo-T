@@ -1,6 +1,6 @@
 {
-  "app_name": "demo_3",
-  "app_description": "A cool app to know when it is going to be cool and when it is going to be hot",
+  "app_name": "aq_solar_check",
+  "app_description": "A cool app which knows when to turn your appliances on/off",
   "cmd": ["npm install", "npm run dev"],
   "sensors": {
     "AQI": 2,
