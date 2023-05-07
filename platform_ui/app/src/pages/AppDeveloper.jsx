@@ -11,11 +11,13 @@ const platform_backend_base_url = "http://localhost:3001";
 export const AppDeveloper = () => {
   const [zip, setZip] = React.useState(null);
   const [config, setConfig] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
   const { pathname } = useLocation();
   const { authUser } = useContext(AuthContext);
 
   const upload = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (!zip && !config) {
       return;
     }
@@ -31,13 +33,17 @@ export const AppDeveloper = () => {
       });
       if (response.ok) {
         console.log("File upload successful");
+        alert("File upload successful");
         // Handle success
       } else {
         console.log("File upload failed");
+        alert("File upload failed");
       }
     } catch (error) {
       console.log("File upload failed", error);
+      alert("File upload failed", error);
     }
+    setLoading(false);
   };
 
   React.useEffect(() => {
@@ -78,7 +84,9 @@ export const AppDeveloper = () => {
           <div className="my-4">
             <button
               type="submit"
-              className="w-full px-4 py-2 bg-[#94f494] rounded-lg font-bold text-[#0d0d0d] opacity-95 hover:opacity-100 active:scale-[0.99] hover:shadow-lg"
+              className={`w-full px-4 py-2 bg-[#94f494] rounded-lg font-bold text-[#0d0d0d] opacity-95 hover:opacity-100 active:scale-[0.99] hover:shadow-lg ${
+                loading ? "animate-pulse opacity-75" : " "
+              }`}
             >
               Submit
             </button>
