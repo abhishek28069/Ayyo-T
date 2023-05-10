@@ -1,2 +1,27 @@
-2023-05-07 09:07:06,224 - INFO - <BrokerConnection node_id=bootstrap-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: connecting to 20.75.91.206:9092 [('20.75.91.206', 9092) IPv4]
-2023-05-07 09:07:06,226 - INFO - Probing node bootstrap-0 broker version
+2023-05-08 09:32:26,340 - INFO - <BrokerConnection node_id=bootstrap-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: connecting to 20.75.91.206:9092 [('20.75.91.206', 9092) IPv4]
+2023-05-08 09:32:26,340 - INFO - Probing node bootstrap-0 broker version
+2023-05-08 09:32:26,582 - INFO - <BrokerConnection node_id=bootstrap-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: Connection complete.
+2023-05-08 09:32:26,939 - INFO - Broker version identified as 2.5.0
+2023-05-08 09:32:26,939 - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2023-05-08 09:32:26,939 - INFO - Updating subscribed topics to: ('monitoring_to_platform_initializer',)
+2023-05-08 09:32:27,184 - INFO - Group coordinator for consumer-group-a is BrokerMetadata(nodeId='coordinator-0', host='20.75.91.206', port=9092, rack=None)
+2023-05-08 09:32:27,184 - INFO - Discovered coordinator coordinator-0 for group consumer-group-a
+2023-05-08 09:32:27,184 - INFO - Starting new heartbeat thread
+2023-05-08 09:32:27,185 - INFO - Revoking previously assigned partitions set() for group consumer-group-a
+2023-05-08 09:32:27,187 - INFO - <BrokerConnection node_id=coordinator-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: connecting to 20.75.91.206:9092 [('20.75.91.206', 9092) IPv4]
+2023-05-08 09:32:27,489 - INFO - <BrokerConnection node_id=coordinator-0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: Connection complete.
+2023-05-08 09:32:27,489 - INFO - <BrokerConnection node_id=bootstrap-0 host=20.75.91.206:9092 <connected> [IPv4 ('20.75.91.206', 9092)]>: Closing connection. 
+2023-05-08 09:32:27,590 - INFO - (Re-)joining group consumer-group-a
+2023-05-08 09:32:35,065 - INFO - Successfully joined group consumer-group-a with generation 455
+2023-05-08 09:32:35,065 - INFO - Updated partition assignment: []
+2023-05-08 09:32:35,065 - INFO - Setting newly assigned partitions set() for group consumer-group-a
+2023-05-08 09:32:38,308 - WARNING - Heartbeat failed for group consumer-group-a because it is rebalancing
+2023-05-08 09:32:38,308 - INFO - Revoking previously assigned partitions set() for group consumer-group-a
+2023-05-08 09:32:38,308 - INFO - (Re-)joining group consumer-group-a
+2023-05-08 09:32:38,798 - INFO - Successfully joined group consumer-group-a with generation 456
+2023-05-08 09:32:38,799 - INFO - Updated partition assignment: [TopicPartition(topic='monitoring_to_platform_initializer', partition=0)]
+2023-05-08 09:32:38,799 - INFO - Setting newly assigned partitions {TopicPartition(topic='monitoring_to_platform_initializer', partition=0)} for group consumer-group-a
+2023-05-08 09:32:39,046 - INFO - <BrokerConnection node_id=0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: connecting to 20.75.91.206:9092 [('20.75.91.206', 9092) IPv4]
+2023-05-08 09:32:39,286 - INFO - <BrokerConnection node_id=0 host=20.75.91.206:9092 <connecting> [IPv4 ('20.75.91.206', 9092)]>: Connection complete.
+2023-05-08 09:34:15,863 - INFO - message received from monitoring
+2023-05-08 09:34:15,863 - INFO - {'module': 'deployer'}

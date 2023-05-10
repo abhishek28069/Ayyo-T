@@ -11,13 +11,13 @@ const platform_backend_base_url = "http://localhost:3001";
 export const AppDeveloper = () => {
   const [zip, setZip] = React.useState(null);
   const [config, setConfig] = React.useState(null);
-  const [loading, setLoading] = React.useState(false);
+  // const [loading, setLoading] = React.useState(false);
   const { pathname } = useLocation();
   const { authUser } = useContext(AuthContext);
 
   const upload = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    // setLoading(true);
     if (!zip && !config) {
       return;
     }
@@ -43,7 +43,7 @@ export const AppDeveloper = () => {
       console.log("File upload failed", error);
       alert("File upload failed", error);
     }
-    setLoading(false);
+    // setLoading(false);
   };
 
   React.useEffect(() => {
