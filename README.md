@@ -16,4 +16,8 @@
    to open the frontend (localhost:5173)
 
 ## Platform Demo
-![platform demo](https://github.com/abhishek28069/Ayyo-T/blob/main/diagrams/platform%20demo.mp4)
+
+https://github.com/abhishek28069/Ayyo-T/assets/38246372/7401d03c-6a41-4c81-a42b-aec7b85eb5f9
+
+
+
