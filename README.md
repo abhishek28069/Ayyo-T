@@ -14,3 +14,6 @@
          `npm install`
          `npm run dev`
    to open the frontend (localhost:5173)
+
+## Platform Demo
+![platform demo](https://github.com/abhishek28069/Ayyo-T/blob/main/diagrams/platform%20demo.mp4)
