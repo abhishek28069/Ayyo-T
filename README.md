@@ -13,4 +13,4 @@
 5. go to `./ui/sensormanager_frontend` and run
          `npm install`
          `npm run dev`
-   to open the frontend (localhost:5173)
+   to open the frontend (localhost:5173) 
